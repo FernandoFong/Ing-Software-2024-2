@@ -6,3 +6,5 @@ Repositorio oficial de la materia de Ingenieria de Software de la Facultad de Ci
 - Francisco Valdes Souto
 - Valeria Garcia Landa
 - Fernando Fong
+- Erick Martínez Piza
+- Rogelio Alcantar Arenas
