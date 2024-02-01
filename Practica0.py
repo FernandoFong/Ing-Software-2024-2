@@ -25,5 +25,5 @@ def validate(passwd, hash):
     return m == hash
 
 if __name__ == '__main__':
-    name = 'Fernando Fong' #Inserte su nombre aquí.
+    name = 'Sara Matute' #Inserte su nombre aquí.
     print(cipher(name))
