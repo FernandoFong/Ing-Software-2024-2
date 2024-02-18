@@ -42,3 +42,40 @@ CREATE TABLE `rentar` (
   CONSTRAINT `idPelicula` FOREIGN KEY (`idPelicula`) REFERENCES `peliculas` (`idPelicula`),
   CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Insertar registros en la tabla usuarios
+INSERT INTO usuarios (nombre, apPat, apMat, password, email, superUser)
+VALUES 
+('Juan', 'García', 'López', 'password123', 'juan@example.com', 1),
+('María', 'Martínez', 'Gómez', 'securepass', 'maria@example.com', 0),
+('Carlos', 'Hernández', 'Pérez', '123456', 'carlos@example.com', 0),
+('Laura', 'Díaz', 'Rodríguez', 'laurapass', 'laura@example.com', 0),
+('Pedro', 'Sánchez', 'López', 'peterpass', 'pedro@example.com', 0);
+
+SELECT * FROM usuarios;
+
+INSERT INTO peliculas (nombre, genero, duracion, inventario)
+VALUES 
+('Pelicula1', 'Acción', 120, 10),
+('Pelicula2', 'Comedia', 90, 15),
+('Pelicula3', 'Drama', 110, 20),
+('Pelicula4', 'Ciencia Ficción', 150, 8),
+('Pelicula5', 'Romance', 100, 12);
+
+SELECT * FROM peliculas;
+
+
+-- Insertar registros en la tabla rentar
+INSERT INTO rentar (idUsuario, idPelicula, fecha_renta, dias_de_renta, estatus)
+VALUES 
+(13, 1, '2024-02-17 12:00:00', 3, 1),
+(15, 3, '2024-02-16 10:30:00', 5, 0),
+(13, 2, '2024-02-15 08:45:00', 7, 1),
+(16, 5, '2024-02-14 14:20:00', 4, 1),
+(14, 4, '2024-02-13 16:00:00', 2, 0);
+
+SELECT * FROM rentar;
+
+DELETE  FROM usuarios;
+DELETE FROM rentar;
+DELETE FROM peliculas;
