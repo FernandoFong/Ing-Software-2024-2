@@ -1,5 +1,6 @@
 import pymysql.cursors
 import random
+from datetime import datetime, timedelta
 import string
 
 # connect to the database
@@ -156,6 +157,13 @@ def cadena_random(lenght):
     return "".join(random.choice(letters) for i in range(lenght))
 
 
+def fecha_random(start_date, end_date):
+    delta = end_date - start_date
+    random_days = random.randint(0, delta.days)
+    random_date = start_date + timedelta(days=random_days)
+    return random_date
+
+
 # Funcion para generar un email aleatorio
 def random_email():
     return cadena_random(10) + "@gmail.com"
@@ -207,10 +215,14 @@ def insertar_en_tablas():
 
     id_pelicula = obtener_ultimo_id("peliculas")  # ultima peli insertada
 
+    fecha_inicio = datetime(2021, 1, 1)
+    fecha_fin = datetime(2025, 12, 31)
+    fecha_renta = fecha_random(fecha_inicio, fecha_fin)
+
     rentar_data = {
         "idUsuario": id_usuario,
         "idPelicula": id_pelicula,
-        "fecha_renta": "2021-06-30",
+        "fecha_renta": "2024-02-18",
         "dias_de_renta": random.randint(1, 7),
         "estatus": random.randint(0, 1),
     }
@@ -245,8 +257,13 @@ def cambiar_genero_pelicula(nombre_pelicula: str, genero: str):
         connection.close()
 
 
-if __name__ == "__main__":
-
-    insertar_en_tablas()  # Descomentar para insertar datos aleatorios
-
-    # create("usuarios", {"nombre": "Juan", "apPat": "Perez", "apMat": "Gomez
+def eliminar_renta_anteror_a_3_dias():
+    try:
+        with connection.cursor() as cursor:
+            sql = (
+                "DELETE FROM rentar WHERE fecha_renta < DATE_SUB(NOW(), INTERVAL 3 DAY)"
+            )
+            cursor.execute(sql)
+        connection.commit()
+    finally:
+        connection.close()
