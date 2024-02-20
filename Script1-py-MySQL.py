@@ -222,7 +222,7 @@ def insertar_en_tablas():
     rentar_data = {
         "idUsuario": id_usuario,
         "idPelicula": id_pelicula,
-        "fecha_renta": "2024-02-18",
+        "fecha_renta": fecha_renta,
         "dias_de_renta": random.randint(1, 7),
         "estatus": random.randint(0, 1),
     }
@@ -246,6 +246,22 @@ def filtrar_apPat(cadena: str):
         connection.close()
 
 
+
+def filtrar_apMat(cadena: str):
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM usuarios WHERE apMat LIKE %s"
+            cursor.execute(sql, (f"%{cadena}",))
+            results = cursor.fetchall()
+            formatted_results = []  # pone chulo el resultado
+            for user in results:
+                formatted_user = f"ID: {user['idUsuario']}, Nombre: {user['nombre']} ApellidoP: {user['apPat']} ApellidoM: {user['apMat']}, Email: {user['email'],}"
+                formatted_results.append(formatted_user)
+            return formatted_results
+    finally:
+        connection.close()
+
+
 # ///////////////////////////////////////////////////////////////////////////////// 3)funcion que dado el nombre de una pelicula(input) y un genero, si dicha pelicula existe, se le cambie el genero a dicha pelicula
 def cambiar_genero_pelicula(nombre_pelicula: str, genero: str):
     try:
@@ -256,7 +272,7 @@ def cambiar_genero_pelicula(nombre_pelicula: str, genero: str):
     finally:
         connection.close()
 
-
+# ///////////////////////////////////////////////////////////////////////////////// 4)funcion que borra todas las rentas de 3 dias pa atras
 def eliminar_renta_anteror_a_3_dias():
     try:
         with connection.cursor() as cursor:
@@ -267,3 +283,7 @@ def eliminar_renta_anteror_a_3_dias():
         connection.commit()
     finally:
         connection.close()
+
+# if __name__ == '__main__':
+#     print(filtrar_apMat("ez"))
+
