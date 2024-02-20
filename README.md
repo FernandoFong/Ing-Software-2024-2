@@ -7,4 +7,4 @@ Repositorio oficial de la materia de Ingenieria de Software de la Facultad de Ci
 - Valeria Garcia Landa
 - Fernando Fong
 - Erick Martínez Piza
-- Rogelio Alcantar Arenas
+- Adriana Hernandez Gasca
