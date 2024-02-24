@@ -1,11 +1,10 @@
-create database lab_ing_software;
+CREATE DATABASE lab_ing_software;
 
-create user 'lab'@'localhost' identified by 'Developer123!';
+CREATE USER 'lab'@'localhost' IDENTIFIED BY 'Developer123!';
 
-grant all privileges on lab_ing_software.* to 'lab'@'localhost'
-with grant option;
+GRANT ALL PRIVILEGES ON lab_ing_software.* TO 'lab'@'localhost' WITH GRANT OPTION;
 
-use lab_ing_software;
+USE lab_ing_software;
 
 CREATE TABLE `usuarios` (
   `idUsuario` int NOT NULL AUTO_INCREMENT,
@@ -16,7 +15,7 @@ CREATE TABLE `usuarios` (
   `superUser` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET='utf8mb4';
 
 CREATE TABLE `peliculas` (
   `idPelicula` int NOT NULL AUTO_INCREMENT,
@@ -25,7 +24,7 @@ CREATE TABLE `peliculas` (
   `duracion` int DEFAULT NULL,
   `inventario` int NOT NULL DEFAULT '1',
   PRIMARY KEY (`idPelicula`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET='utf8mb4';
 
 CREATE TABLE `rentar` (
   `idRentar` int NOT NULL AUTO_INCREMENT,
@@ -37,6 +36,6 @@ CREATE TABLE `rentar` (
   PRIMARY KEY (`idRentar`),
   KEY `idUsuario_idx` (`idUsuario`),
   KEY `idPelicula_idx` (`idPelicula`),
-  CONSTRAINT `idPelicula` FOREIGN KEY (`idPelicula`) REFERENCES `peliculas` (`idPelicula`),
-  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `idPelicula` FOREIGN KEY (`idPelicula`) REFERENCES `peliculas` (`idPelicula`) ON DELETE CASCADE,
+  CONSTRAINT `idUsuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 CHARSET='utf8mb4';

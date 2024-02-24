@@ -1,10 +1,23 @@
-# Ingeniería de Software 2024-2
-Repositorio oficial de la materia de Ingenieria de Software de la Facultad de Ciencias de la UNAM del semestre 2024-2
+# Practica 2 
+Morales Hidalgo Pedro
+nc: 319267334
 
-## Profesores:
-
-- Francisco Valdes Souto
-- Valeria Garcia Landa
-- Fernando Fong
-- Erick Martínez Piza
-- Rogelio Alcantar Arenas
+# Como Ejecutar?
+Bueno primero debes tener en cuenta que el sql debera ser conectado para que funcione.
+Después deberas activar el entorno estos son los pasos que yo sigo
+```
+.\entornoPedrito\.venv\Scripts\activate
+```
+Ya con esto deberia estar activo el entorno. Para ejecutar la parte uno deberas entrar a la 
+carpeta del entorno *cd entornoPedrito*. Para ejecutar los archivos:
+Parte uno-
+```
+python python .\parteUno.py  
+```
+Parte dos-
+```
+python python .\parteUno.py  
+```
+Cosas adicionales, el script de la parte uno no tiene prevencion a errores mas que las excepciones 
+de sql en caso de cualquier error al querer hacer algo, sorry si me dio hueva hacerlo ya después. 
+En caso de la parte dos de alchemy si tiene toda la prevención a errores. 
