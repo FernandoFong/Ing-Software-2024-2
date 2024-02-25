@@ -21,5 +21,6 @@ python python .\parteUno.py
 ```
 Cosas adicionales, el script de la parte uno no tiene prevencion a errores mas que las excepciones 
 de sql en caso de cualquier error al querer hacer algo, sorry si me dio hueva hacerlo ya después. 
-En caso de la parte dos de alchemy si tiene toda la prevención a errores. 
-
+En caso de la parte dos de alchemy si tiene toda la prevención a errores. OJOOOOOO el sql fue modificado 
+con cascade, so pruebalo con esto porque si no te va dar errores después, casi todo lo que pusiste en el 
+primer archivo de sql daba errores. :c
