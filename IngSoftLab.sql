@@ -10,6 +10,8 @@ use lab_ing_software;
 CREATE TABLE `usuarios` (
   `idUsuario` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) NOT NULL,
+  `apPat` varchar(200) NOT NULL,
+  `apMat` varchar(200), 
   `password` varchar(64) NOT NULL,
   `email` varchar(500) DEFAULT NULL,
   `profilePicture` longblob,
