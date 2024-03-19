@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+    <style>
+        .button-link {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <ul>
+        {% for usuario in usuarios %}
+        <li>
+            {{ usuario.nombre }} - {{ usuario.apPat }} - {{ usuario.apMat }} - {{ usuario.email }}
+            <!-- Botón de Editar -->
+            <a href="{{ url_for('usuario.editar_usuario', id_usuario=usuario.idUsuario) }}" class="button-link">Editar</a>
+            <!-- Formulario de Eliminar -->
+            <form action="{{ url_for('usuario.eliminar_usuario', id_usuario=usuario.idUsuario) }}" method="post" style="display: inline;">
+                <input type="submit" value="Eliminar" class="button-link" style="background-color: #dc3545;">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('usuario.agregar_usuario') }}" class="button-link" style="background-color: #0fe247;">Agregar Usuario</a>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

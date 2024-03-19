@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Películas</title>
+    <style>
+        .button-link {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Películas</h1>
+    <ul>
+        {% for pelicula in peliculas %}
+        <li>
+            {{ pelicula.nombre }} - {{ pelicula.genero }} - {{ pelicula.duracion }} - {{ pelicula.inventario }}
+            <!-- Botón de Editar -->
+            <a href="{{ url_for('pelicula.editar_pelicula', id_pelicula=pelicula.idPelicula) }}" class="button-link">Editar</a>
+            <!-- Formulario de Eliminar -->
+            <form action="{{ url_for('pelicula.eliminar_pelicula', id_pelicula=pelicula.idPelicula) }}" method="post" style="display: inline;">
+                <input type="submit" value="Eliminar" class="button-link" style="background-color: #dc3545;">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('pelicula.agregar_pelicula') }}" class="button-link" style="background-color: #0fe247;">Agregar Película</a>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

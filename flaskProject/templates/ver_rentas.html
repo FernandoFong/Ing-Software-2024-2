@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Rentas</title>
+    <style>
+        .button-link {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rentas</h1>
+    <ul>
+        {% for renta in rentas %}
+        <li>
+            Renta ID: {{ renta.idRentar }} - Renta ID: {{ renta.idRentar }} - Película ID: {{ renta.idRentar }}
+            - Fecha de Renta: {{ renta.fecha_renta.strftime('%Y-%m-%d') }} - Días de Renta: {{ renta.dias_de_renta }} - Estatus: {{ renta.estatus }}
+        <a href="{{ url_for('renta.editar_renta', id_renta=renta.idRentar) }}" class="button-link">Editar</a>
+        <form action="{{ url_for('renta.renta', id_renta=renta.idRentar) }}" method="post" style="display: inline;">
+                <input type="submit" value="Eliminar" class="button-link" style="background-color: #dc3545;">
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('renta.renta') }}" class="button-link" style="background-color: #0fe247;">Agregar Renta</a>
+    {% if get_flashed_messages() %}
+        {% for message in get_flashed_messages() %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

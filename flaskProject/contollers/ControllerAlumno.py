@@ -16,7 +16,7 @@ def ver_alumno_id(id_alumno, nombre):
 @alumno_blueprint.route('/agregar', methods=['GET', 'POST'])
 def agregar_alumno():
     if request.method == 'GET':
-        return render_template('add_user.html')
+        return render_template('add_usuario.html')
     else:
         #Obtengo la información del método post.
         name = request.form['name']
@@ -34,4 +34,4 @@ def agregar_alumno():
             flash("Hello from flash!")
             return url_for('alumno.agregar_alumno')
         # Y regreso al flujo que me hayan especificado.
-        return render_template('user_added.html', name=name, num_cta=num_cta)
+        return render_template('usuario_added.html', name=name, num_cta=num_cta)

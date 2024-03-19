@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Renta</title>
+    <!-- Estilos omitidos por brevedad -->
+</head>
+<body>
+    <h1>Editar Renta</h1>
+    <form method="POST">
+        <!-- Switch que refleja el valor de 'estatus' -->
+        <label class="switch">
+          <input type="checkbox" id="estatusSwitch" name="estatus" value="1" {{ 'checked' if estatus == 1 else '' }}>
+          <span class="slider round"></span>
+        </label>
+
+        <!-- Botón de Enviar -->
+        <input type="submit" value="Guardar Cambios">
+    </form>
+
+    <script>
+        document.getElementById('estatusSwitch').onchange = function() {
+            this.value = this.checked ? 1 : 0;
+        };
+    </script>
+</body>
+</html>

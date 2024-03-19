@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    <h1>Editar Usuario</h1>
+    <form method="POST">
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" value="{{ usuario.nombre }}" required>
+        <label for="ap_pat">Apellido Paterno:</label>
+        <input type="text" name="ap_pat" value="{{ usuario.ap_pat }}">
+        <label for="ap_mat">Apellido Materno:</label>
+        <input type="text" name="ap_mat" value="{{ usuario.ap_mat }}">
+        <label for="passwd">Password:</label>
+        <input type="password" name="passwd" value="{{ usuario.passwd }}">
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ usuario.email }}">
+        <input type="submit" value="Actualizar">
+    </form>
+</body>
+</html>
